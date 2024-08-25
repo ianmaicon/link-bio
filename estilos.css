@@ -1,0 +1,232 @@
+:root {
+  --cor-fundo: #212123;
+  --cor-icones: #535c68;
+  --cor-fundo-icone1: #e4405f;
+  --cor-fundo-icone2: #ff0050;
+  --cor-fundo-icone3: #171515;
+  --cor-fundo-icone4: #cd201f;
+  --cor-fundo-icone5: #0077b5;
+}
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+  font: 15px "Roboto";
+  background-color: #212123;
+  color: #7a7572;
+}
+
+#profile{
+  margin-top: -35px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px #666;
+}
+#profile > h1{
+  font-size: 3em;
+}
+
+/*Redes sociais*/
+section {
+  width: 100vw;
+  display: flex;
+  background: var(--cor-fundo);
+  z-index: -10;
+  justify-content: center;
+}
+.lista__icones {
+  width: 100%;
+  max-width: 35rem;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  padding: 0;
+}
+.icone__elemento__geral {
+  list-style: none;
+}
+.elemento__interno__redirect {
+  display: inline-flex;
+  text-decoration: none;
+  color: var(--cor-icones);
+  width: 6rem;
+  height: 6rem;
+  transition: 0.5s linear;
+  position: relative;
+  z-index: 1;
+}
+.elemento__interno__redirect:hover {
+  color: #fff;
+}
+
+.elemento__interno__redirect i {
+  margin: auto;
+}
+.elemento__interno__redirect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 6rem;
+  height: 6rem;
+  background: #000;
+  border-radius: 50%;
+  z-index: -1;
+  transform: scale(0);
+  transition: 0.3s cubic-bezier(0.95, 0.32, 0.37, 1.21);
+}
+.elemento__interno__redirect:hover::before {
+  transform: scale(1);
+}
+.icone__elemento__geral:nth-child(1) a:hover:before {
+  background: var(--cor-fundo-icone1);
+}
+.icone__elemento__geral:nth-child(2) a:hover:before {
+  background: var(--cor-fundo-icone2);
+}
+.icone__elemento__geral:nth-child(3) a:hover:before {
+  background: var(--cor-fundo-icone3);
+}
+.icone__elemento__geral:nth-child(4) a:hover:before {
+  background: var(--cor-fundo-icone4);
+}
+.icone__elemento__geral:nth-child(5) a:hover:before {
+  background: var(--cor-fundo-icone5);
+}
+/*Redes sociais*/
+.elemento__sanfona {
+  margin: 0.5em auto 3em;
+  max-width: 30em;
+}
+
+.toggle {
+  display: none;
+}
+
+.elemento__item {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.elemento__item-titulo,
+.elemento__item-conteudo {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: all 0.2s;
+}
+
+.elemento__item-titulo {
+  background: #efefef;
+  padding: 1em;
+  display: block;
+  color: #7a7572;
+  font-weight: bold;
+}
+
+.elemento__item-titulo:hover{
+  background-color: var(--cor-icones);
+  color: var(--cor-fundo-icone1);
+  box-shadow: 1px 1px 35px 4px rgba(236, 236, 236, 0.45);
+}
+
+.elemento__item-titulo:after,
+.elemento__item-titulo:before {
+  content: "";
+  position: absolute;
+  right: 1.25em;
+  top: 1.25em;
+  width: 2px;
+  height: 0.75em;
+  background-color: #fffefe;
+  transition: all 0.2s;
+}
+
+.elemento__item-titulo:after {
+  transform: rotate(90deg);
+}
+
+.elemento__item-conteudo {
+  max-height: 0;
+  overflow: hidden;
+  background-color: #efefef;
+}
+.elemento__item-conteudo ul{
+  list-style: none;
+}
+.elemento__item-conteudo ul li {
+  margin: 0;
+  padding: 0.5em 1em 1em;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+.elemento__item-conteudo ul li a{
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--cor-fundo-icone5);
+}
+
+.elemento__item-conteudo ul li a:hover{
+  color: var(--cor-fundo-icone2);
+}
+
+.toggle:checked + .elemento__item-titulo,
+.toggle:checked + .elemento__item-titulo + .elemento__item-conteudo {
+  box-shadow: 3px 3px 6px #ddd, -3px 3px 6px #ddd;
+}
+.toggle:checked + .elemento__item-titulo + .elemento__item-conteudo {
+  max-height: 500px;
+}
+.toggle:checked + .elemento__item-titulo:before {
+  transform: rotate(90deg) !important;
+}
+
+@media (min-width: 320px) and (max-width: 360px) {
+  .lista__icones {
+    flex-wrap: wrap; /* Permite que os itens quebrem linha */
+    justify-content: center; /* Centraliza os itens que sobrarem na linha */
+    padding: 0; /* Remove qualquer padding que possa afetar o alinhamento */
+    margin: 0 auto; /* Centraliza a lista de ícones dentro do contêiner */
+  }
+
+  .elemento__interno__redirect {
+    width: 4rem; /* Reduz o tamanho dos ícones */
+    height: 4rem;
+    margin: 0.5rem; /* Espaçamento entre os ícones */
+  }
+
+  .elemento__interno__redirect::before {
+    width: 4rem; /* Reduz o tamanho do background dos ícones */
+    height: 4rem;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 600px) {
+  #profile{
+    padding-top: 70px;
+  }
+  .lista__icones {
+    margin: 45px 0;
+  }
+
+}
+
+@media (min-width: 600px) {
+  #profile{
+    padding: 45px 0 0;
+  }
+  .lista__icones {
+    margin: 45px 0;
+  }
+
+}
+
